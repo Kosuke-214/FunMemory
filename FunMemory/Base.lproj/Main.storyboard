@@ -14,12 +14,12 @@
         <!--Top View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="TopViewController" customModule="Tiger_s_Memory" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="TopViewController" customModule="FunMemory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tiger's Memory" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXc-Xm-ifI">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fun Memory" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXc-Xm-ifI">
                                 <rect key="frame" x="55" y="129" width="265" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="265" id="GbU-gf-1fq"/>
@@ -49,6 +49,9 @@
                                         <rect key="frame" x="0.0" y="190" width="152" height="42"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <state key="normal" title="設定"/>
+                                        <connections>
+                                            <segue destination="Oof-Wx-Tny" kind="show" id="sOc-Sv-ReG"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -70,10 +73,67 @@
             </objects>
             <point key="canvasLocation" x="47.826086956521742" y="20.758928571428569"/>
         </scene>
+        <!--ユーザ名設定-->
+        <scene sceneID="5Vy-wF-Tyq">
+            <objects>
+                <viewController id="Ovz-aJ-A3x" customClass="SettingViewController" customModule="FunMemory" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Kfn-iw-tL1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ゲスト" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SvJ-3o-0BY">
+                                <rect key="frame" x="149.5" y="226.5" width="76" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ユーザ名 (10文字まで)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Knj-ut-4DV">
+                                <rect key="frame" x="93" y="318.5" width="189" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vY-di-m7h">
+                                <rect key="frame" x="172" y="393.5" width="31" height="30"/>
+                                <state key="normal" title="変更"/>
+                                <connections>
+                                    <action selector="changeNameButton:" destination="Ovz-aJ-A3x" eventType="touchUpInside" id="5hJ-j3-QcB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Knj-ut-4DV" firstAttribute="centerX" secondItem="SvJ-3o-0BY" secondAttribute="centerX" id="TPF-y5-NLG"/>
+                            <constraint firstItem="Knj-ut-4DV" firstAttribute="centerX" secondItem="7vY-di-m7h" secondAttribute="centerX" id="Wgx-WV-OW8"/>
+                            <constraint firstItem="M0V-av-HzI" firstAttribute="trailing" secondItem="Knj-ut-4DV" secondAttribute="trailing" constant="93" id="Ysk-cq-gcn"/>
+                            <constraint firstItem="Knj-ut-4DV" firstAttribute="top" secondItem="SvJ-3o-0BY" secondAttribute="bottom" constant="62" id="g3W-fQ-j3i"/>
+                            <constraint firstItem="Knj-ut-4DV" firstAttribute="leading" secondItem="M0V-av-HzI" secondAttribute="leading" constant="93" id="mZD-us-ACP"/>
+                            <constraint firstItem="7vY-di-m7h" firstAttribute="top" secondItem="Knj-ut-4DV" secondAttribute="bottom" constant="45" id="nhS-n6-BND"/>
+                            <constraint firstItem="Knj-ut-4DV" firstAttribute="centerY" secondItem="Kfn-iw-tL1" secondAttribute="centerY" id="zcP-XP-3LB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="M0V-av-HzI"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="ユーザ名設定" id="VEL-w4-zwL">
+                        <barButtonItem key="leftBarButtonItem" title="戻る" id="4zY-mF-gRD">
+                            <connections>
+                                <segue destination="955-3d-ttE" kind="unwind" unwindAction="returnToTopWithSender:" id="Y7C-MM-1xv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="userNameLabel" destination="SvJ-3o-0BY" id="JZk-ln-wBP"/>
+                        <outlet property="userNameTextField" destination="Knj-ut-4DV" id="za7-CN-WCb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1a2-mc-h59" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="955-3d-ttE" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1864.8" y="465.51724137931041"/>
+        </scene>
         <!--Play Game View Controller-->
         <scene sceneID="k3v-Sh-S2E">
             <objects>
-                <viewController id="j8n-FR-iQw" customClass="PlayGameViewController" customModule="Tiger_s_Memory" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="j8n-FR-iQw" customClass="PlayGameViewController" customModule="FunMemory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jhW-lH-lWL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -123,7 +183,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="uZa-Zg-GDx" id="p2r-iU-E99"/>
-                        <segue destination="3IE-Z9-axh" kind="unwind" identifier="exitGameSegue" unwindAction="exitGameWithSender:" id="bFZ-fM-HHd"/>
+                        <segue destination="3IE-Z9-axh" kind="unwind" identifier="exitGameSegue" unwindAction="returnToTopWithSender:" id="bFZ-fM-HHd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Lp-8Q-CoV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -148,6 +208,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z8j-BU-Qlz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="925.60000000000002" y="-390.85457271364322"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fPe-s0-5Hq">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Oof-Wx-Tny" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8LS-Uo-MT3">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ovz-aJ-A3x" kind="relationship" relationship="rootViewController" id="mKN-Lw-ceI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ODE-FB-vl0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="925.60000000000002" y="465.51724137931041"/>
         </scene>
     </scenes>
     <resources>

@@ -17,6 +17,8 @@
 		7409E81B22FB21B800FC1448 /* FunMemoryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7409E81A22FB21B800FC1448 /* FunMemoryUITests.swift */; };
 		7409E82B22FB22B100FC1448 /* PlayGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7409E82922FB22B000FC1448 /* PlayGameViewController.swift */; };
 		7409E82C22FB22B100FC1448 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7409E82A22FB22B100FC1448 /* TopViewController.swift */; };
+		7409E82F22FB2C8C00FC1448 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7409E82E22FB2C8C00FC1448 /* SettingViewController.swift */; };
+		7409E83122FC5C0700FC1448 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7409E83022FC5C0700FC1448 /* UserData.swift */; };
 		92614983CC233A4314745366 /* Pods_FunMemoryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A7A2A978CEBC70198C97365 /* Pods_FunMemoryTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +57,8 @@
 		7409E81C22FB21B800FC1448 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7409E82922FB22B000FC1448 /* PlayGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayGameViewController.swift; sourceTree = "<group>"; };
 		7409E82A22FB22B100FC1448 /* TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
+		7409E82E22FB2C8C00FC1448 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		7409E83022FC5C0700FC1448 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		84EC1BFAC9894038186D8AF3 /* Pods-FunMemory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunMemory.debug.xcconfig"; path = "Target Support Files/Pods-FunMemory/Pods-FunMemory.debug.xcconfig"; sourceTree = "<group>"; };
 		C39B462A105516043B101204 /* Pods-FunMemoryUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunMemoryUITests.debug.xcconfig"; path = "Target Support Files/Pods-FunMemoryUITests/Pods-FunMemoryUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C944712B78FE84DC421E7140 /* Pods_FunMemoryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunMemoryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,8 +134,10 @@
 			isa = PBXGroup;
 			children = (
 				7409E7FA22FB21B700FC1448 /* AppDelegate.swift */,
-				7409E82922FB22B000FC1448 /* PlayGameViewController.swift */,
 				7409E82A22FB22B100FC1448 /* TopViewController.swift */,
+				7409E82922FB22B000FC1448 /* PlayGameViewController.swift */,
+				7409E82E22FB2C8C00FC1448 /* SettingViewController.swift */,
+				7409E83022FC5C0700FC1448 /* UserData.swift */,
 				7409E7FE22FB21B700FC1448 /* Main.storyboard */,
 				7409E80122FB21B800FC1448 /* Assets.xcassets */,
 				7409E80322FB21B800FC1448 /* LaunchScreen.storyboard */,
@@ -337,7 +343,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which \"${PODS_ROOT}/SwiftLint/swiftlint\" >/dev/null; then\n${PODS_ROOT}/SwiftLint/swiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "#if which \"${PODS_ROOT}/SwiftLint/swiftlint\" >/dev/null; then\n#${PODS_ROOT}/SwiftLint/swiftlint\n#else\n#echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n#fi\n";
 		};
 		C977B28F0F8CCBEF45B4BBAD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -393,6 +399,8 @@
 				7409E82C22FB22B100FC1448 /* TopViewController.swift in Sources */,
 				7409E7FB22FB21B700FC1448 /* AppDelegate.swift in Sources */,
 				7409E82B22FB22B100FC1448 /* PlayGameViewController.swift in Sources */,
+				7409E83122FC5C0700FC1448 /* UserData.swift in Sources */,
+				7409E82F22FB2C8C00FC1448 /* SettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

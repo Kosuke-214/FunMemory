@@ -15,7 +15,7 @@ class TopViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func exitGame(sender: UIStoryboardSegue) {
+    @IBAction func returnToTop(sender: UIStoryboardSegue) {
         // ゲーム終了時処理実装
         
     }
