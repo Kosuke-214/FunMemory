@@ -14,12 +14,10 @@ class TopViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-    
+
     @IBAction func returnToTop(sender: UIStoryboardSegue) {
         // ゲーム終了時処理実装
-        
+
     }
 
-
 }
-
