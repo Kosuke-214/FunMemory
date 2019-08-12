@@ -11,8 +11,22 @@ import UIKit
 class PlayGameViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    // 配列定義
-    let cards = [String](repeating: "CardBack", count: 16)
+    // カード名のインデックス
+    var cardIndexArray = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6]
+    // カードオブジェクトを格納する配列
+    var cards = [CardData]()
+    
+    
+    override func awakeFromNib() {
+        // 配列をランダムに並び替え
+        let shuffledCardIndexArray = cardIndexArray.shuffled()
+        
+        // カードオブジェクトを配列に格納
+        for cardIndex in shuffledCardIndexArray {
+            let card = CardData(no: cardIndex)
+            cards.append(card)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,9 +68,17 @@ class PlayGameViewController: UIViewController {
 
 extension PlayGameViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // スタンプが押された時の処理を書く
-        print(indexPath)
+        
+        // 選択したカードを反転
+        let card = self.cards[indexPath.row]
+        card.reverseCard(collectionView: self.collectionView)
+        
+        let cell = collectionView.cellForItem(at: indexPath)
+        
+        let imageView = cell?.contentView.viewWithTag(1) as! UIImageView
+        imageView.image = UIImage(named: cards[indexPath.row].getImageName())
     }
+    
 }
 
 
@@ -72,9 +94,18 @@ extension PlayGameViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardCell", for: indexPath)
         
         let imageView = cell.contentView.viewWithTag(1) as! UIImageView
-        imageView.image = UIImage(named: cards[indexPath.row])
+        imageView.image = UIImage(named: cards[indexPath.row].getImageName())
 
         return cell
     }
 }
 
+//extension PlayGameViewController: UICollectionViewDelegateFlowLayout {
+//    
+//    func collectionView(_ collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,
+//                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        
+//        let cellSize:CGFloat = self.view.bounds.width / 5
+//        return CGSize(width: cellSize, height: cellSize)
+//    }
+//}
