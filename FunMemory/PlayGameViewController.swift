@@ -12,18 +12,31 @@ class PlayGameViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     // カード名のインデックス
-    var cardIndexArray = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6]
+    var cardNoArray = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10]
     // カードオブジェクトを格納する配列
     var cards = [CardData]()
+    // 1枚目に選択したカードのオブジェクト
+    var firstCard: CardData?
+    // 2枚目に選択したカードのオブジェクト
+    var secondCard: CardData?
+    // カードのステータス
+    var status: CardStatus = .none
+
+    // カードステータスの列挙型
+    enum CardStatus {
+        case firstOpen, secondOpen, none
+    }
 
     override func awakeFromNib() {
         // 配列をランダムに並び替え
-        let shuffledCardIndexArray = cardIndexArray.shuffled()
+        let shuffledCardNoArray = cardNoArray.shuffled()
 
         // カードオブジェクトを配列に格納
-        for cardIndex in shuffledCardIndexArray {
-            let card = CardData(no: cardIndex)
+        for (index, cardNo) in zip(shuffledCardNoArray.indices, shuffledCardNoArray) {
+            let card = CardData(no: cardNo)
             cards.append(card)
+
+            card.index = index
         }
     }
 
@@ -66,16 +79,51 @@ class PlayGameViewController: UIViewController {
 extension PlayGameViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        // 選択したカードを反転
         let card = self.cards[indexPath.row]
-        card.reverseCard(collectionView: self.collectionView)
 
-        let cell = collectionView.cellForItem(at: indexPath)
+        switch status {
+        case .none:
+            // カードを一枚も開いていない、かつ選択したカードが裏である場合
+            if !card.isFront {
+                // 一枚目のカードを反転
+                firstCard = card
+                firstCard?.reverseCard(collectionView: self.collectionView)
 
-        let imageView = cell?.contentView.viewWithTag(1) as! UIImageView
-        imageView.image = UIImage(named: cards[indexPath.row].getImageName())
+                // ステータスを更新
+                status = .firstOpen
+            }
+        case .firstOpen:
+            // カードを一枚開いている、かつ選択したカードが裏である場合
+            if !card.isFront {
+                // 二枚目のカードを反転
+                secondCard = card
+                secondCard?.reverseCard(collectionView: self.collectionView)
+
+                // ステータスを更新
+                status = .secondOpen
+
+                // 一枚目と二枚目のカード名が一致する場合
+                if firstCard?.imageName == secondCard?.imageName {
+                    print("Matching!!!")
+                    // ステータスを更新
+                    status = .none
+                } else {
+                    // 一枚目と二枚目のカード名が一致しなければ1秒後にカードを戻す
+                    print("Not Matching...")
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                        self.firstCard?.reverseCard(collectionView: self.collectionView)
+                        self.secondCard?.reverseCard(collectionView: self.collectionView)
+
+                        // ステータスを更新
+                        self.status = .none
+                    }
+                }
+            }
+        case .secondOpen:
+            // 2枚目が開いている場合は選択させない
+            break
+        }
     }
-
 }
 
 extension PlayGameViewController: UICollectionViewDataSource {
@@ -97,12 +145,14 @@ extension PlayGameViewController: UICollectionViewDataSource {
     }
 }
 
-//extension PlayGameViewController: UICollectionViewDelegateFlowLayout {
-//    
-//    func collectionView(_ collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,
-//                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        
-//        let cellSize:CGFloat = self.view.bounds.width / 5
-//        return CGSize(width: cellSize, height: cellSize)
-//    }
-//}
+extension PlayGameViewController: UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        // セルサイズを設定
+        let cellWidth: CGFloat = self.view.bounds.width / 5 - 4
+        let cellHeight: CGFloat = self.collectionView.frame.height / 4 - 60
+        return CGSize(width: cellWidth, height: cellHeight)
+    }
+}

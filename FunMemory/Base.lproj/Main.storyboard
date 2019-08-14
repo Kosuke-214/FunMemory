@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -59,7 +58,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" name="BackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="FMg-HI-cg7" firstAttribute="top" secondItem="lXc-Xm-ifI" secondAttribute="bottom" constant="94" id="Wc3-KO-EDf"/>
                             <constraint firstItem="lXc-Xm-ifI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="109" id="aOC-DA-FLJ"/>
@@ -138,40 +137,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uZa-Zg-GDx">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uZa-Zg-GDx">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.12549019607843137" green="0.43221830985915494" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="4uG-m2-SKs">
-                                    <size key="itemSize" width="60" height="100"/>
+                                    <size key="itemSize" width="81" height="117"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CardCell" id="usz-1e-Qze">
-                                        <rect key="frame" x="0.0" y="0.0" width="60" height="100"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="81" height="117"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="60" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="81" height="117"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CardBack" translatesAutoresizingMaskIntoConstraints="NO" id="zoB-iy-Vp5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="60" height="100"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="81" height="117"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="zoB-iy-Vp5" firstAttribute="top" secondItem="usz-1e-Qze" secondAttribute="top" id="5rX-hy-0CB"/>
-                                            <constraint firstItem="zoB-iy-Vp5" firstAttribute="height" secondItem="usz-1e-Qze" secondAttribute="height" id="QjR-aB-mqQ"/>
-                                            <constraint firstItem="zoB-iy-Vp5" firstAttribute="width" secondItem="usz-1e-Qze" secondAttribute="width" id="h3S-ro-Bq9"/>
-                                            <constraint firstItem="zoB-iy-Vp5" firstAttribute="leading" secondItem="usz-1e-Qze" secondAttribute="leading" id="kB1-lg-4Vk"/>
+                                            <constraint firstItem="zoB-iy-Vp5" firstAttribute="leading" secondItem="usz-1e-Qze" secondAttribute="leading" id="4Cz-Nc-oYK"/>
+                                            <constraint firstAttribute="bottom" secondItem="zoB-iy-Vp5" secondAttribute="bottom" id="5Tq-bq-01F"/>
+                                            <constraint firstItem="zoB-iy-Vp5" firstAttribute="width" secondItem="usz-1e-Qze" secondAttribute="width" id="PMC-wd-ITk"/>
+                                            <constraint firstItem="zoB-iy-Vp5" firstAttribute="top" secondItem="usz-1e-Qze" secondAttribute="top" id="W7U-wn-Fah"/>
+                                            <constraint firstItem="zoB-iy-Vp5" firstAttribute="height" secondItem="usz-1e-Qze" secondAttribute="height" id="YzP-24-U9W"/>
+                                            <constraint firstAttribute="trailing" secondItem="zoB-iy-Vp5" secondAttribute="trailing" id="trd-LC-hlH"/>
                                         </constraints>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.12549019610000001" green="0.43221830989999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="uZa-Zg-GDx" firstAttribute="bottom" secondItem="bgb-iY-UZw" secondAttribute="bottom" id="2ts-xg-Mb5"/>
+                            <constraint firstItem="uZa-Zg-GDx" firstAttribute="top" secondItem="jhW-lH-lWL" secondAttribute="top" id="6UB-Py-Vkx"/>
+                            <constraint firstItem="uZa-Zg-GDx" firstAttribute="trailing" secondItem="bgb-iY-UZw" secondAttribute="trailing" id="UUr-kZ-uIO"/>
+                            <constraint firstItem="uZa-Zg-GDx" firstAttribute="leading" secondItem="bgb-iY-UZw" secondAttribute="leading" id="WeY-oC-Bet"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="bgb-iY-UZw"/>
                     </view>
                     <navigationItem key="navigationItem" id="R7v-jD-x1n">
@@ -230,8 +236,5 @@
     </scenes>
     <resources>
         <image name="CardBack" width="100" height="150"/>
-        <namedColor name="BackgroundColor">
-            <color red="0.23499999940395355" green="1" blue="0.33300000429153442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>

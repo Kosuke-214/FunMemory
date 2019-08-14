@@ -12,6 +12,7 @@ import UIKit
 class CardData {
     let no: Int
     let imageName: String
+    var index: Int = 0
 
     var isFront: Bool
 
@@ -32,5 +33,11 @@ class CardData {
     func reverseCard(collectionView: UICollectionView) {
         // 表裏のBool値を反転
         isFront.toggle()
+
+        let indexPath = IndexPath(item: index, section: 0)
+        let cell = collectionView.cellForItem(at: indexPath)
+
+        let imageView = cell?.contentView.viewWithTag(1) as! UIImageView
+        imageView.image = UIImage(named: getImageName())
     }
 }
