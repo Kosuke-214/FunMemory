@@ -39,5 +39,29 @@ class CardData {
 
         let imageView = cell?.contentView.viewWithTag(1) as! UIImageView
         imageView.image = UIImage(named: getImageName())
+
+        // 反転時のアニメーション
+        UIView.transition(with: imageView, duration: 1.0,
+                          options: [.transitionFlipFromLeft], animations: nil, completion: nil)
+    }
+
+    func matchingAnimation(collectionView: UICollectionView) {
+
+        let indexPath = IndexPath(item: index, section: 0)
+        let cell = collectionView.cellForItem(at: indexPath)
+
+        let imageView = cell?.contentView.viewWithTag(1) as! UIImageView
+        imageView.image = UIImage(named: getImageName())
+
+        // マッチング時のアニメーション
+        UIView.animate(withDuration: 0.5, delay: 1.0, options: .repeat, animations: {
+            imageView.alpha = 0.0
+        }, completion: nil)
+
+        // 2秒後にアニメーションを停止
+        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { (_) in
+            imageView.alpha = 1.0
+        }
+
     }
 }

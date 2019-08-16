@@ -20,6 +20,8 @@
 		7409E82F22FB2C8C00FC1448 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7409E82E22FB2C8C00FC1448 /* SettingViewController.swift */; };
 		7409E83122FC5C0700FC1448 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7409E83022FC5C0700FC1448 /* UserData.swift */; };
 		7409E8332301237E00FC1448 /* CardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7409E8322301237E00FC1448 /* CardData.swift */; };
+		7409E83D2306C9A300FC1448 /* UserCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7409E83C2306C9A300FC1448 /* UserCardView.swift */; };
+		7409E83F2306C9B900FC1448 /* UserCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7409E83E2306C9B900FC1448 /* UserCardView.xib */; };
 		92614983CC233A4314745366 /* Pods_FunMemoryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A7A2A978CEBC70198C97365 /* Pods_FunMemoryTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +63,8 @@
 		7409E82E22FB2C8C00FC1448 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		7409E83022FC5C0700FC1448 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		7409E8322301237E00FC1448 /* CardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardData.swift; sourceTree = "<group>"; };
+		7409E83C2306C9A300FC1448 /* UserCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardView.swift; sourceTree = "<group>"; };
+		7409E83E2306C9B900FC1448 /* UserCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCardView.xib; sourceTree = "<group>"; };
 		84EC1BFAC9894038186D8AF3 /* Pods-FunMemory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunMemory.debug.xcconfig"; path = "Target Support Files/Pods-FunMemory/Pods-FunMemory.debug.xcconfig"; sourceTree = "<group>"; };
 		C39B462A105516043B101204 /* Pods-FunMemoryUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunMemoryUITests.debug.xcconfig"; path = "Target Support Files/Pods-FunMemoryUITests/Pods-FunMemoryUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C944712B78FE84DC421E7140 /* Pods_FunMemoryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunMemoryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +146,8 @@
 				7409E8322301237E00FC1448 /* CardData.swift */,
 				7409E83022FC5C0700FC1448 /* UserData.swift */,
 				7409E7FE22FB21B700FC1448 /* Main.storyboard */,
+				7409E83C2306C9A300FC1448 /* UserCardView.swift */,
+				7409E83E2306C9B900FC1448 /* UserCardView.xib */,
 				7409E80122FB21B800FC1448 /* Assets.xcassets */,
 				7409E80322FB21B800FC1448 /* LaunchScreen.storyboard */,
 				7409E80622FB21B800FC1448 /* Info.plist */,
@@ -286,6 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7409E80522FB21B800FC1448 /* LaunchScreen.storyboard in Resources */,
+				7409E83F2306C9B900FC1448 /* UserCardView.xib in Resources */,
 				7409E80222FB21B800FC1448 /* Assets.xcassets in Resources */,
 				7409E80022FB21B700FC1448 /* Main.storyboard in Resources */,
 			);
@@ -405,6 +412,7 @@
 				7409E8332301237E00FC1448 /* CardData.swift in Sources */,
 				7409E83122FC5C0700FC1448 /* UserData.swift in Sources */,
 				7409E82F22FB2C8C00FC1448 /* SettingViewController.swift in Sources */,
+				7409E83D2306C9A300FC1448 /* UserCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

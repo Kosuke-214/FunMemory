@@ -170,13 +170,36 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="m7k-hC-Map">
+                                <rect key="frame" x="19" y="537" width="337" height="120"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AsK-zk-SEC" customClass="UserCardView" customModule="FunMemory" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="160" height="120"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="160" id="C01-5I-UcE"/>
+                                            <constraint firstAttribute="height" constant="120" id="npp-ah-iIk"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ixf-yg-rm8">
+                                        <rect key="frame" x="177" y="0.0" width="160" height="120"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="120" id="EQ4-0G-oG0"/>
+                                            <constraint firstAttribute="width" constant="160" id="s2L-kd-Ev5"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.12549019610000001" green="0.43221830989999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="uZa-Zg-GDx" firstAttribute="bottom" secondItem="bgb-iY-UZw" secondAttribute="bottom" id="2ts-xg-Mb5"/>
                             <constraint firstItem="uZa-Zg-GDx" firstAttribute="top" secondItem="jhW-lH-lWL" secondAttribute="top" id="6UB-Py-Vkx"/>
+                            <constraint firstItem="m7k-hC-Map" firstAttribute="centerX" secondItem="jhW-lH-lWL" secondAttribute="centerX" id="GGS-nF-YSt"/>
                             <constraint firstItem="uZa-Zg-GDx" firstAttribute="trailing" secondItem="bgb-iY-UZw" secondAttribute="trailing" id="UUr-kZ-uIO"/>
                             <constraint firstItem="uZa-Zg-GDx" firstAttribute="leading" secondItem="bgb-iY-UZw" secondAttribute="leading" id="WeY-oC-Bet"/>
+                            <constraint firstItem="bgb-iY-UZw" firstAttribute="bottom" secondItem="m7k-hC-Map" secondAttribute="bottom" constant="10" id="zhM-y1-u2z"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bgb-iY-UZw"/>
                     </view>
@@ -189,6 +212,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="uZa-Zg-GDx" id="p2r-iU-E99"/>
+                        <outlet property="userCard" destination="AsK-zk-SEC" id="VLZ-mN-gIB"/>
                         <segue destination="3IE-Z9-axh" kind="unwind" identifier="exitGameSegue" unwindAction="returnToTopWithSender:" id="bFZ-fM-HHd"/>
                     </connections>
                 </viewController>

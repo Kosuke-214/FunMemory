@@ -11,6 +11,8 @@ import UIKit
 class PlayGameViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var userCard: UserCardView!
+
     // カード名のインデックス
     var cardNoArray = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10]
     // カードオブジェクトを格納する配列
@@ -21,6 +23,8 @@ class PlayGameViewController: UIViewController {
     var secondCard: CardData?
     // カードのステータス
     var status: CardStatus = .none
+    // ユーザのポイント
+    var userPoint = 0
 
     // カードステータスの列挙型
     enum CardStatus {
@@ -43,8 +47,14 @@ class PlayGameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // delegateとdataSourceを設定
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+
+        // ユーザデータの反映
+        let userData = UserData()
+        self.userCard.userName.text = userData.readData()
+        self.userCard.userPoint.text = String(userPoint)
 
     }
 
@@ -105,17 +115,33 @@ extension PlayGameViewController: UICollectionViewDelegate {
                 // 一枚目と二枚目のカード名が一致する場合
                 if firstCard?.imageName == secondCard?.imageName {
                     print("Matching!!!")
-                    // ステータスを更新
-                    status = .none
+
+                    firstCard?.matchingAnimation(collectionView: self.collectionView)
+                    secondCard?.matchingAnimation(collectionView: self.collectionView)
+
+                    // ポイントを加算
+                    userPoint += 1
+                    self.userCard.userPoint.text = String(userPoint)
+
+                    // マッチングのアニメーション中にタップさせないようにステータス更新を遅らせる
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+                        // ステータスを更新
+                        self.status = .none
+                    }
+
+                // 一枚目と二枚目のカード名が一致しない場合
                 } else {
-                    // 一枚目と二枚目のカード名が一致しなければ1秒後にカードを戻す
+                    // 1.5秒後にカードを戻す
                     print("Not Matching...")
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
                         self.firstCard?.reverseCard(collectionView: self.collectionView)
                         self.secondCard?.reverseCard(collectionView: self.collectionView)
 
-                        // ステータスを更新
-                        self.status = .none
+                        // 反転中もタップさせないようにステータス更新を1秒遅らせる
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                            // ステータスを更新
+                            self.status = .none
+                        }
                     }
                 }
             }
@@ -152,7 +178,7 @@ extension PlayGameViewController: UICollectionViewDelegateFlowLayout {
 
         // セルサイズを設定
         let cellWidth: CGFloat = self.view.bounds.width / 5 - 4
-        let cellHeight: CGFloat = self.collectionView.frame.height / 4 - 60
+        let cellHeight: CGFloat = self.collectionView.frame.height / 4 - 55
         return CGSize(width: cellWidth, height: cellHeight)
     }
 }
