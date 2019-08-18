@@ -17,6 +17,22 @@ class TopViewController: UIViewController {
 
     @IBAction func returnToTop(sender: UIStoryboardSegue) {
         // ゲーム終了時処理実装
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        // 1人プレイの場合
+        guard let identifier = segue.identifier else {
+            return
+        }
+
+        if identifier == "toSoloPlay" {
+            let solo = segue.destination as! UINavigationController
+            let playGameViewController = solo.topViewController as! PlayGameViewController
+
+            playGameViewController.gameMode = "Solo"
+
+        }
 
     }
 

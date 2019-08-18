@@ -14,7 +14,7 @@ class UserData {
 
     init() {
         // デフォルト値
-        userDefaults.register(defaults: ["UserName": "default"])
+        userDefaults.register(defaults: ["UserName": "ゲスト"])
     }
 
     func saveData(str: String) {

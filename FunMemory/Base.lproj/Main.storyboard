@@ -36,7 +36,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <state key="normal" title="1人プレイ"/>
                                         <connections>
-                                            <segue destination="n4m-NU-2Tj" kind="show" id="AuM-i3-fkj"/>
+                                            <segue destination="n4m-NU-2Tj" kind="show" identifier="toSoloPlay" id="AuM-i3-fkj"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="30c-00-utr">
@@ -80,35 +80,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ゲスト" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SvJ-3o-0BY">
-                                <rect key="frame" x="149.5" y="226.5" width="76" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ユーザ名 (10文字まで)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Knj-ut-4DV">
-                                <rect key="frame" x="93" y="318.5" width="189" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vY-di-m7h">
-                                <rect key="frame" x="172" y="393.5" width="31" height="30"/>
-                                <state key="normal" title="変更"/>
-                                <connections>
-                                    <action selector="changeNameButton:" destination="Ovz-aJ-A3x" eventType="touchUpInside" id="5hJ-j3-QcB"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="53" translatesAutoresizingMaskIntoConstraints="NO" id="ITP-P8-0H6">
+                                <rect key="frame" x="71" y="235.5" width="233.5" height="196"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ゲスト" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SvJ-3o-0BY">
+                                        <rect key="frame" x="78.5" y="0.0" width="76" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ユーザ名 (10文字まで)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Knj-ut-4DV">
+                                        <rect key="frame" x="0.0" y="83" width="233.5" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vY-di-m7h">
+                                        <rect key="frame" x="101" y="166" width="31" height="30"/>
+                                        <state key="normal" title="変更"/>
+                                        <connections>
+                                            <action selector="changeNameButton:" destination="Ovz-aJ-A3x" eventType="touchUpInside" id="5hJ-j3-QcB"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Knj-ut-4DV" firstAttribute="centerX" secondItem="SvJ-3o-0BY" secondAttribute="centerX" id="TPF-y5-NLG"/>
-                            <constraint firstItem="Knj-ut-4DV" firstAttribute="centerX" secondItem="7vY-di-m7h" secondAttribute="centerX" id="Wgx-WV-OW8"/>
-                            <constraint firstItem="M0V-av-HzI" firstAttribute="trailing" secondItem="Knj-ut-4DV" secondAttribute="trailing" constant="93" id="Ysk-cq-gcn"/>
-                            <constraint firstItem="Knj-ut-4DV" firstAttribute="top" secondItem="SvJ-3o-0BY" secondAttribute="bottom" constant="62" id="g3W-fQ-j3i"/>
-                            <constraint firstItem="Knj-ut-4DV" firstAttribute="leading" secondItem="M0V-av-HzI" secondAttribute="leading" constant="93" id="mZD-us-ACP"/>
-                            <constraint firstItem="7vY-di-m7h" firstAttribute="top" secondItem="Knj-ut-4DV" secondAttribute="bottom" constant="45" id="nhS-n6-BND"/>
-                            <constraint firstItem="Knj-ut-4DV" firstAttribute="centerY" secondItem="Kfn-iw-tL1" secondAttribute="centerY" id="zcP-XP-3LB"/>
+                            <constraint firstItem="ITP-P8-0H6" firstAttribute="centerY" secondItem="Kfn-iw-tL1" secondAttribute="centerY" id="77f-jX-N1f"/>
+                            <constraint firstItem="ITP-P8-0H6" firstAttribute="centerX" secondItem="Kfn-iw-tL1" secondAttribute="centerX" id="AbR-8l-iq0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="M0V-av-HzI"/>
                     </view>
@@ -181,7 +181,7 @@
                                             <constraint firstAttribute="height" constant="120" id="npp-ah-iIk"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ixf-yg-rm8">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ixf-yg-rm8" customClass="UserCardView" customModule="FunMemory" customModuleProvider="target">
                                         <rect key="frame" x="177" y="0.0" width="160" height="120"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -212,7 +212,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="uZa-Zg-GDx" id="p2r-iU-E99"/>
-                        <outlet property="userCard" destination="AsK-zk-SEC" id="VLZ-mN-gIB"/>
+                        <outlet property="user1Card" destination="AsK-zk-SEC" id="VLZ-mN-gIB"/>
+                        <outlet property="user2Card" destination="ixf-yg-rm8" id="gLJ-Ag-rjc"/>
                         <segue destination="3IE-Z9-axh" kind="unwind" identifier="exitGameSegue" unwindAction="returnToTopWithSender:" id="bFZ-fM-HHd"/>
                     </connections>
                 </viewController>

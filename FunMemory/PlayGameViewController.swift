@@ -11,7 +11,8 @@ import UIKit
 class PlayGameViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var userCard: UserCardView!
+    @IBOutlet weak var user1Card: UserCardView!
+    @IBOutlet weak var user2Card: UserCardView!
 
     // カード名のインデックス
     var cardNoArray = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10]
@@ -25,6 +26,8 @@ class PlayGameViewController: UIViewController {
     var status: CardStatus = .none
     // ユーザのポイント
     var userPoint = 0
+    // ゲームモード
+    var gameMode: String?
 
     // カードステータスの列挙型
     enum CardStatus {
@@ -53,8 +56,19 @@ class PlayGameViewController: UIViewController {
 
         // ユーザデータの反映
         let userData = UserData()
-        self.userCard.userName.text = userData.readData()
-        self.userCard.userPoint.text = String(userPoint)
+        self.user1Card.userName.text = userData.readData()
+        self.user1Card.userPoint.text = String(userPoint)
+
+        // 1人プレイの場合
+        if gameMode == "Solo" {
+
+            // ユーザカードの枠線を設定
+            self.user1Card.layer.borderWidth = 5.0
+            self.user1Card.layer.borderColor = UIColor.blue.cgColor
+
+            // 対戦相手のカード非表示
+            self.user2Card.isHidden = true
+        }
 
     }
 
@@ -121,7 +135,7 @@ extension PlayGameViewController: UICollectionViewDelegate {
 
                     // ポイントを加算
                     userPoint += 1
-                    self.userCard.userPoint.text = String(userPoint)
+                    self.user1Card.userPoint.text = String(userPoint)
 
                     // マッチングのアニメーション中にタップさせないようにステータス更新を遅らせる
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {

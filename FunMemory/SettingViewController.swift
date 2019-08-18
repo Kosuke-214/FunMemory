@@ -18,6 +18,10 @@ class SettingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // delegateを設定
+        userNameTextField.delegate = self
+
         // UserDefaultsに保存したユーザ名を表示
         userNameLabel.text = userData.readData()
     }
@@ -57,6 +61,16 @@ class SettingViewController: UIViewController {
         // テキストフィールドの値をクリア
         userNameTextField.text = ""
 
+    }
+
+}
+
+extension SettingViewController: UITextFieldDelegate {
+
+    // returnキー押下でキーボードを閉じる
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 
 }
