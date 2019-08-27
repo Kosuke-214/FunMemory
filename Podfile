@@ -7,6 +7,8 @@ target 'FunMemory' do
 
   # Pods for FunMemory
   pod 'SwiftLint'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Database'
 
   target 'FunMemoryTests' do
     inherit! :search_paths

@@ -28,6 +28,8 @@ class PlayGameViewController: UIViewController {
     var userPoint = 0
     // ゲームモード
     var gameMode: String?
+    // 部屋名
+    var roomName: String?
 
     // カードステータスの列挙型
     enum CardStatus {

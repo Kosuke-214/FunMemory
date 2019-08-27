@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,6 +22,10 @@
 		7409E8332301237E00FC1448 /* CardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7409E8322301237E00FC1448 /* CardData.swift */; };
 		7409E83D2306C9A300FC1448 /* UserCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7409E83C2306C9A300FC1448 /* UserCardView.swift */; };
 		7409E83F2306C9B900FC1448 /* UserCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7409E83E2306C9B900FC1448 /* UserCardView.xib */; };
+		743F32C0230AD2B9006C7E0E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 743F32BF230AD2B9006C7E0E /* GoogleService-Info.plist */; };
+		743F32C2230AE369006C7E0E /* RoomListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743F32C1230AE369006C7E0E /* RoomListViewController.swift */; };
+		743F32C5230D80FA006C7E0E /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743F32C3230D80FA006C7E0E /* TableViewCell.swift */; };
+		743F32C6230D80FA006C7E0E /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 743F32C4230D80FA006C7E0E /* TableViewCell.xib */; };
 		92614983CC233A4314745366 /* Pods_FunMemoryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A7A2A978CEBC70198C97365 /* Pods_FunMemoryTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +69,10 @@
 		7409E8322301237E00FC1448 /* CardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardData.swift; sourceTree = "<group>"; };
 		7409E83C2306C9A300FC1448 /* UserCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardView.swift; sourceTree = "<group>"; };
 		7409E83E2306C9B900FC1448 /* UserCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCardView.xib; sourceTree = "<group>"; };
+		743F32BF230AD2B9006C7E0E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		743F32C1230AE369006C7E0E /* RoomListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListViewController.swift; sourceTree = "<group>"; };
+		743F32C3230D80FA006C7E0E /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		743F32C4230D80FA006C7E0E /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		84EC1BFAC9894038186D8AF3 /* Pods-FunMemory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunMemory.debug.xcconfig"; path = "Target Support Files/Pods-FunMemory/Pods-FunMemory.debug.xcconfig"; sourceTree = "<group>"; };
 		C39B462A105516043B101204 /* Pods-FunMemoryUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunMemoryUITests.debug.xcconfig"; path = "Target Support Files/Pods-FunMemoryUITests/Pods-FunMemoryUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C944712B78FE84DC421E7140 /* Pods_FunMemoryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunMemoryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +150,9 @@
 				7409E7FA22FB21B700FC1448 /* AppDelegate.swift */,
 				7409E82A22FB22B100FC1448 /* TopViewController.swift */,
 				7409E82922FB22B000FC1448 /* PlayGameViewController.swift */,
+				743F32C1230AE369006C7E0E /* RoomListViewController.swift */,
+				743F32C3230D80FA006C7E0E /* TableViewCell.swift */,
+				743F32C4230D80FA006C7E0E /* TableViewCell.xib */,
 				7409E82E22FB2C8C00FC1448 /* SettingViewController.swift */,
 				7409E8322301237E00FC1448 /* CardData.swift */,
 				7409E83022FC5C0700FC1448 /* UserData.swift */,
@@ -151,6 +162,7 @@
 				7409E80122FB21B800FC1448 /* Assets.xcassets */,
 				7409E80322FB21B800FC1448 /* LaunchScreen.storyboard */,
 				7409E80622FB21B800FC1448 /* Info.plist */,
+				743F32BF230AD2B9006C7E0E /* GoogleService-Info.plist */,
 			);
 			path = FunMemory;
 			sourceTree = "<group>";
@@ -195,6 +207,7 @@
 				7409E7F422FB21B700FC1448 /* Frameworks */,
 				7409E7F522FB21B700FC1448 /* Resources */,
 				7409E82D22FB235900FC1448 /* SwiftLint */,
+				8CAD46EBE3C2CA858D5E4FBC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -292,7 +305,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7409E80522FB21B800FC1448 /* LaunchScreen.storyboard in Resources */,
+				743F32C6230D80FA006C7E0E /* TableViewCell.xib in Resources */,
 				7409E83F2306C9B900FC1448 /* UserCardView.xib in Resources */,
+				743F32C0230AD2B9006C7E0E /* GoogleService-Info.plist in Resources */,
 				7409E80222FB21B800FC1448 /* Assets.xcassets in Resources */,
 				7409E80022FB21B700FC1448 /* Main.storyboard in Resources */,
 			);
@@ -355,6 +370,23 @@
 			shellPath = /bin/sh;
 			shellScript = "if which \"${PODS_ROOT}/SwiftLint/swiftlint\" >/dev/null; then\n${PODS_ROOT}/SwiftLint/swiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
+		8CAD46EBE3C2CA858D5E4FBC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FunMemory/Pods-FunMemory-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FunMemory/Pods-FunMemory-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FunMemory/Pods-FunMemory-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		C977B28F0F8CCBEF45B4BBAD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -409,10 +441,12 @@
 				7409E82C22FB22B100FC1448 /* TopViewController.swift in Sources */,
 				7409E7FB22FB21B700FC1448 /* AppDelegate.swift in Sources */,
 				7409E82B22FB22B100FC1448 /* PlayGameViewController.swift in Sources */,
+				743F32C5230D80FA006C7E0E /* TableViewCell.swift in Sources */,
 				7409E8332301237E00FC1448 /* CardData.swift in Sources */,
 				7409E83122FC5C0700FC1448 /* UserData.swift in Sources */,
 				7409E82F22FB2C8C00FC1448 /* SettingViewController.swift in Sources */,
 				7409E83D2306C9A300FC1448 /* UserCardView.swift in Sources */,
+				743F32C2230AE369006C7E0E /* RoomListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,6 +625,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GX3H7872T6;
 				INFOPLIST_FILE = FunMemory/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -610,6 +645,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GX3H7872T6;
 				INFOPLIST_FILE = FunMemory/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
