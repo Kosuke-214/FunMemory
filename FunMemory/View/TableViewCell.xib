@@ -37,8 +37,8 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="25b-Sy-vht">
-                        <rect key="frame" x="110" y="11.5" width="42" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="25b-Sy-vht">
+                        <rect key="frame" x="110" y="22" width="42" height="0.0"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="42" id="eO5-aE-9Ll"/>
                         </constraints>
@@ -58,6 +58,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="enter" destination="cBd-aU-yY3" id="aP1-il-Mc8"/>
                 <outlet property="roomCountLabel" destination="25b-Sy-vht" id="8Oy-cu-rdm"/>
                 <outlet property="roomNameLabel" destination="q70-HR-elI" id="gzx-7C-tzr"/>
             </connections>

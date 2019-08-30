@@ -25,7 +25,8 @@ class UserCardView: UIView {
 
     private func loadFromNib() {
         let view = UINib(nibName: "UserCardView",
-                      bundle: Bundle(for: UserCardView.self)).instantiate(withOwner: self, options: nil)[0] as! UIView
+                         bundle: Bundle(for: UserCardView.self))
+            .instantiate(withOwner: self, options: nil)[0] as! UIView
         view.frame = self.bounds
         addSubview(view)
     }

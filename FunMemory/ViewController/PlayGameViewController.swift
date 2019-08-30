@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class PlayGameViewController: UIViewController {
 
@@ -30,6 +31,8 @@ class PlayGameViewController: UIViewController {
     var gameMode: String?
     // 部屋名
     var roomName: String?
+    // DB接続用
+    let database = Database.database().reference().child("room").child("Room1")
 
     // カードステータスの列挙型
     enum CardStatus {
@@ -56,13 +59,15 @@ class PlayGameViewController: UIViewController {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
 
-        // ユーザデータの反映
+        // ユーザデータをインスタンス化
         let userData = UserData()
-        self.user1Card.userName.text = userData.readData()
-        self.user1Card.userPoint.text = String(userPoint)
 
-        // 1人プレイの場合
-        if gameMode == "Solo" {
+        switch gameMode {
+        case "Solo":
+            // 1人プレイの場合
+            // ユーザデータの反映
+            self.user1Card.userName.text = userData.readData()
+            self.user1Card.userPoint.text = String(userPoint)
 
             // ユーザカードの枠線を設定
             self.user1Card.layer.borderWidth = 5.0
@@ -70,8 +75,48 @@ class PlayGameViewController: UIViewController {
 
             // 対戦相手のカード非表示
             self.user2Card.isHidden = true
+
+        case "Multi":
+            // マルチプレイの場合
+            // ユーザ名の反映
+            database.child("userName").observeSingleEvent(of: .value, with: { [weak self] snapshot in
+                if let data = snapshot.value as? NSDictionary {
+                    if let user1 = data["user1"] as! String?, let user2 = data["user2"] as! String? {
+                        if user1 == "none" {
+                            // ユーザがいない場合、user1に自分を設定
+                            self?.database.child("userName/user1").setValue(userData.readData())
+                            self?.user1Card.userName.text = userData.readData()
+                            self?.user2Card.userName.text = user2
+                        } else {
+                            // user1が存在する場合、user2に自分を設定
+                            self?.database.child("userName/user2").setValue(userData.readData())
+                            self?.user1Card.userName.text = user1
+                            self?.user2Card.userName.text = userData.readData()
+                        }
+                    }
+                }
+            })
+
+            // ユーザが自分1人の場合は対戦相手を待機
+            observeOpponent()
+
+        default:
+            break
         }
 
+    }
+
+    func observeOpponent() {
+        database.child("userName").observe(.value, with: { [weak self] snapshot in
+            if let data = snapshot.value as? NSDictionary {
+                if let user2 = data["user2"] as! String? {
+                    if user2 != "none" {
+                        // user2が入室したらラベルを更新
+                        self?.user2Card.userName.text = user2
+                    }
+                }
+            }
+        })
     }
 
     @IBAction func exitButton(_ sender: Any) {
@@ -83,13 +128,14 @@ class PlayGameViewController: UIViewController {
         // Actionの設定
         let defaultAction: UIAlertAction = UIAlertAction(title: "終了", style: UIAlertAction.Style.default,
                                                          handler: { (_: UIAlertAction!) -> Void in
-            print("終了")
-            self.performSegue(withIdentifier: "exitGameSegue", sender: true)
+                                                            print("終了")
+                                                            self.performSegue(withIdentifier: "exitGameSegue",
+                                                                              sender: true)
         })
         // キャンセルボタン
         let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel,
                                                         handler: { (_: UIAlertAction!) -> Void in
-            print("Cancel")
+                                                            print("Cancel")
         })
 
         // UIAlertControllerにActionを追加
@@ -145,7 +191,7 @@ extension PlayGameViewController: UICollectionViewDelegate {
                         self.status = .none
                     }
 
-                // 一枚目と二枚目のカード名が一致しない場合
+                    // 一枚目と二枚目のカード名が一致しない場合
                 } else {
                     // 1.5秒後にカードを戻す
                     print("Not Matching...")

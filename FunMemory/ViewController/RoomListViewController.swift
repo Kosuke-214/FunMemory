@@ -12,7 +12,7 @@ class RoomListViewController: UIViewController {
 
     @IBOutlet weak var roomTableView: UITableView!
 
-    let rooms = ["部屋1", "部屋2", "部屋3"]
+    let rooms = ["部屋1"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +53,7 @@ extension RoomListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // セルを取得する
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell",
-                                                                  for: indexPath) as! TableViewCell
+                                                 for: indexPath) as! TableViewCell
         // セルに表示する値を設定する
         cell.setRoomName(name: rooms[indexPath.row])
 
