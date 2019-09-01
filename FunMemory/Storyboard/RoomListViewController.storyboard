@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CCn-q3-MsI">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--部屋選択-->
+        <scene sceneID="MGb-ny-iT8">
+            <objects>
+                <viewController id="fPf-Gs-f2d" customClass="RoomListViewController" customModule="FunMemory" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bfx-W2-sgA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iC6-Vs-o7S">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="roomCell" id="Qgm-R6-3SJ">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qgm-R6-3SJ" id="7gN-dJ-Slz">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="iC6-Vs-o7S" firstAttribute="leading" secondItem="xF9-a4-sgJ" secondAttribute="leading" id="Kme-PU-t5N"/>
+                            <constraint firstAttribute="bottom" secondItem="iC6-Vs-o7S" secondAttribute="bottom" id="LWE-c5-Dch"/>
+                            <constraint firstItem="xF9-a4-sgJ" firstAttribute="trailing" secondItem="iC6-Vs-o7S" secondAttribute="trailing" id="RhO-M5-eOU"/>
+                            <constraint firstItem="iC6-Vs-o7S" firstAttribute="top" secondItem="bfx-W2-sgA" secondAttribute="top" id="WV6-RT-HtI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xF9-a4-sgJ"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="部屋選択" id="nNl-P7-gj4">
+                        <barButtonItem key="leftBarButtonItem" title="戻る" id="9kY-Kb-UOb">
+                            <connections>
+                                <segue destination="LNF-S1-nzd" kind="unwind" unwindAction="returnToTopWithSender:" id="iIv-mu-1dV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="roomTableView" destination="iC6-Vs-o7S" id="uDu-xd-b0B"/>
+                        <segue destination="MRK-Qu-V7S" kind="show" identifier="toMultiPlay" id="9GV-jc-RE1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fVZ-a4-kc3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="LNF-S1-nzd" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1864.8" y="19.340329835082461"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ELm-Oj-Ctd">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CCn-q3-MsI" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TQz-rK-hFe">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="fPf-Gs-f2d" kind="relationship" relationship="rootViewController" id="JSu-2n-Kzf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aTU-Nr-BU6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="925.60000000000002" y="19.340329835082461"/>
+        </scene>
+        <!--UINavigationController-n4m-NU-2Tj-->
+        <scene sceneID="PbU-xn-IiO">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="UINavigationController-n4m-NU-2Tj" id="MRK-Qu-V7S" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cHQ-zY-LE0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2774" y="19"/>
+        </scene>
+    </scenes>
+</document>

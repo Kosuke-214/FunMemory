@@ -39,7 +39,13 @@ class PlayGameViewController: UIViewController {
         case firstOpen, secondOpen, none
     }
 
-    override func awakeFromNib() {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // delegateとdataSourceを設定
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+
         // 配列をランダムに並び替え
         let shuffledCardNoArray = cardNoArray.shuffled()
 
@@ -50,14 +56,6 @@ class PlayGameViewController: UIViewController {
 
             card.index = index
         }
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // delegateとdataSourceを設定
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
 
         // ユーザデータをインスタンス化
         let userData = UserData()
@@ -99,24 +97,13 @@ class PlayGameViewController: UIViewController {
 
             // ユーザが自分1人の場合は対戦相手を待機
             observeOpponent()
+            // 対戦相手の退出を監視
+            observeMember()
 
         default:
             break
         }
 
-    }
-
-    func observeOpponent() {
-        database.child("userName").observe(.value, with: { [weak self] snapshot in
-            if let data = snapshot.value as? NSDictionary {
-                if let user2 = data["user2"] as! String? {
-                    if user2 != "none" {
-                        // user2が入室したらラベルを更新
-                        self?.user2Card.userName.text = user2
-                    }
-                }
-            }
-        })
     }
 
     @IBAction func exitButton(_ sender: Any) {
@@ -129,6 +116,10 @@ class PlayGameViewController: UIViewController {
         let defaultAction: UIAlertAction = UIAlertAction(title: "終了", style: UIAlertAction.Style.default,
                                                          handler: { (_: UIAlertAction!) -> Void in
                                                             print("終了")
+
+                                                            // DB情報をクリア
+                                                            self.clearDB()
+                                                            // 画面遷移実行
                                                             self.performSegue(withIdentifier: "exitGameSegue",
                                                                               sender: true)
         })
@@ -144,6 +135,87 @@ class PlayGameViewController: UIViewController {
 
         // Alertを表示
         present(alert, animated: true, completion: nil)
+    }
+
+    func observeOpponent() {
+
+        // インジケータ表示用アラート
+        let alert = UIAlertController(title: "対戦相手を待機中...", message: "\n", preferredStyle: .alert)
+
+        // インジゲータ表示
+        let indicator = UIActivityIndicatorView()
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.isUserInteractionEnabled = false
+        indicator.color = UIColor.lightGray
+        indicator.startAnimating()
+        alert.view.addSubview(indicator)
+
+        // アラート内の制約設定
+        let views: [String: UIView] = ["alert": alert.view, "indicator": indicator]
+        var constraints = NSLayoutConstraint.constraints(withVisualFormat: "V:[indicator]-(12)-|",
+                                                         options: [],
+                                                         metrics: nil,
+                                                         views: views)
+        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|[indicator]|",
+                                                      options: [],
+                                                      metrics: nil,
+                                                      views: views)
+        alert.view.addConstraints(constraints)
+
+        // アラート表示
+        present(alert, animated: true, completion: {
+            self.database.child("userName").observe(.value, with: { [weak self] snapshot in
+                if let data = snapshot.value as? NSDictionary {
+                    if let user2 = data["user2"] as! String? {
+                        if user2 != "none" {
+                            // user2が入室したらアラートを消去
+                            alert.dismiss(animated: true, completion: nil)
+                            // user2が入室したらラベルを更新
+                            self?.user2Card.userName.text = user2
+                        }
+                    }
+                }
+            })
+        })
+    }
+
+    func observeMember() {
+        database.observe(.value, with: { [weak self] snapshot in
+            if let data = snapshot.value as? NSDictionary {
+                if let userCount = data["userCount"] as! Int? {
+                    if userCount == 0 {
+
+                        let alert: UIAlertController = UIAlertController(title: "通知",
+                                                                         message: "対戦相手が退出しました",
+                                                                         preferredStyle: UIAlertController.Style.alert)
+
+                        // Actionの設定
+                        let okAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default,
+                                                                    handler: { (_: UIAlertAction!) -> Void in
+                                                                        // 画面遷移実行
+                                                                        self?.performSegue(withIdentifier:
+                                                                            "exitGameSegue",
+                                                                                           sender: true)
+                        })
+                        // UIAlertControllerにActionを追加
+                        alert.addAction(okAction)
+
+                        // Alertを表示
+                        self?.present(alert, animated: true, completion: nil)
+
+                    }
+                }
+            }
+        })
+    }
+
+    func clearDB() {
+        // DB情報をクリア
+        self.database.child("userName/user1").setValue("none")
+        self.database.child("userName/user2").setValue("none")
+        self.database.child("point/user1").setValue(0)
+        self.database.child("point/user2").setValue(0)
+        self.database.child("userCount").setValue(0)
     }
 
 }

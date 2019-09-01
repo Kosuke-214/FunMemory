@@ -10,9 +10,7 @@
 		01E63B1C1F60DA27E618723B /* Pods_FunMemory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05EAFC8FFB8EB9FE03163D67 /* Pods_FunMemory.framework */; };
 		4E58A2C20D1F17F49DC06439 /* Pods_FunMemoryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C944712B78FE84DC421E7140 /* Pods_FunMemoryUITests.framework */; };
 		7409E7FB22FB21B700FC1448 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7409E7FA22FB21B700FC1448 /* AppDelegate.swift */; };
-		7409E80022FB21B700FC1448 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7409E7FE22FB21B700FC1448 /* Main.storyboard */; };
 		7409E80222FB21B800FC1448 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7409E80122FB21B800FC1448 /* Assets.xcassets */; };
-		7409E80522FB21B800FC1448 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7409E80322FB21B800FC1448 /* LaunchScreen.storyboard */; };
 		7409E81022FB21B800FC1448 /* FunMemoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7409E80F22FB21B800FC1448 /* FunMemoryTests.swift */; };
 		7409E81B22FB21B800FC1448 /* FunMemoryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7409E81A22FB21B800FC1448 /* FunMemoryUITests.swift */; };
 		743F32C0230AD2B9006C7E0E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 743F32BF230AD2B9006C7E0E /* GoogleService-Info.plist */; };
@@ -26,6 +24,11 @@
 		743F32DB231562BA006C7E0E /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743F32D1231562BA006C7E0E /* TopViewController.swift */; };
 		743F32DC231562BA006C7E0E /* RoomListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743F32D2231562BA006C7E0E /* RoomListViewController.swift */; };
 		743F32DD231562BA006C7E0E /* PlayGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743F32D3231562BA006C7E0E /* PlayGameViewController.swift */; };
+		743F32E8231B9DF6006C7E0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 743F32E5231B9DF6006C7E0E /* LaunchScreen.storyboard */; };
+		743F32E9231B9DF6006C7E0E /* SettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 743F32E6231B9DF6006C7E0E /* SettingViewController.storyboard */; };
+		743F32EA231B9DF6006C7E0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 743F32E7231B9DF6006C7E0E /* Main.storyboard */; };
+		743F32EC231B9EBE006C7E0E /* RoomListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 743F32EB231B9EBE006C7E0E /* RoomListViewController.storyboard */; };
+		743F32EE231B9F00006C7E0E /* PlayGameViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 743F32ED231B9F00006C7E0E /* PlayGameViewController.storyboard */; };
 		92614983CC233A4314745366 /* Pods_FunMemoryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A7A2A978CEBC70198C97365 /* Pods_FunMemoryTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,9 +55,7 @@
 		653E285CF6D89471A10F468B /* Pods-FunMemoryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunMemoryTests.release.xcconfig"; path = "Target Support Files/Pods-FunMemoryTests/Pods-FunMemoryTests.release.xcconfig"; sourceTree = "<group>"; };
 		7409E7F722FB21B700FC1448 /* FunMemory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunMemory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7409E7FA22FB21B700FC1448 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7409E7FF22FB21B700FC1448 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7409E80122FB21B800FC1448 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		7409E80422FB21B800FC1448 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7409E80622FB21B800FC1448 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7409E80B22FB21B800FC1448 /* FunMemoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FunMemoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7409E80F22FB21B800FC1448 /* FunMemoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunMemoryTests.swift; sourceTree = "<group>"; };
@@ -73,6 +74,11 @@
 		743F32D1231562BA006C7E0E /* TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		743F32D2231562BA006C7E0E /* RoomListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomListViewController.swift; sourceTree = "<group>"; };
 		743F32D3231562BA006C7E0E /* PlayGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayGameViewController.swift; sourceTree = "<group>"; };
+		743F32E5231B9DF6006C7E0E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		743F32E6231B9DF6006C7E0E /* SettingViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SettingViewController.storyboard; sourceTree = "<group>"; };
+		743F32E7231B9DF6006C7E0E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		743F32EB231B9EBE006C7E0E /* RoomListViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RoomListViewController.storyboard; sourceTree = "<group>"; };
+		743F32ED231B9F00006C7E0E /* PlayGameViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PlayGameViewController.storyboard; sourceTree = "<group>"; };
 		84EC1BFAC9894038186D8AF3 /* Pods-FunMemory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunMemory.debug.xcconfig"; path = "Target Support Files/Pods-FunMemory/Pods-FunMemory.debug.xcconfig"; sourceTree = "<group>"; };
 		C39B462A105516043B101204 /* Pods-FunMemoryUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunMemoryUITests.debug.xcconfig"; path = "Target Support Files/Pods-FunMemoryUITests/Pods-FunMemoryUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C944712B78FE84DC421E7140 /* Pods_FunMemoryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunMemoryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,8 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				7409E7FA22FB21B700FC1448 /* AppDelegate.swift */,
-				7409E80322FB21B800FC1448 /* LaunchScreen.storyboard */,
-				7409E7FE22FB21B700FC1448 /* Main.storyboard */,
+				743F32E4231B9DF6006C7E0E /* Storyboard */,
 				743F32C7231562BA006C7E0E /* Model */,
 				743F32CA231562BA006C7E0E /* View */,
 				743F32CF231562BA006C7E0E /* ViewController */,
@@ -207,6 +212,18 @@
 				743F32D3231562BA006C7E0E /* PlayGameViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		743F32E4231B9DF6006C7E0E /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				743F32E5231B9DF6006C7E0E /* LaunchScreen.storyboard */,
+				743F32E6231B9DF6006C7E0E /* SettingViewController.storyboard */,
+				743F32E7231B9DF6006C7E0E /* Main.storyboard */,
+				743F32ED231B9F00006C7E0E /* PlayGameViewController.storyboard */,
+				743F32EB231B9EBE006C7E0E /* RoomListViewController.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 		793111BE03EB35E68ECA2489 /* Frameworks */ = {
@@ -328,12 +345,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7409E80522FB21B800FC1448 /* LaunchScreen.storyboard in Resources */,
+				743F32EC231B9EBE006C7E0E /* RoomListViewController.storyboard in Resources */,
+				743F32EA231B9DF6006C7E0E /* Main.storyboard in Resources */,
+				743F32E9231B9DF6006C7E0E /* SettingViewController.storyboard in Resources */,
 				743F32D9231562BA006C7E0E /* TableViewCell.xib in Resources */,
 				743F32D7231562BA006C7E0E /* UserCardView.xib in Resources */,
 				743F32C0230AD2B9006C7E0E /* GoogleService-Info.plist in Resources */,
+				743F32E8231B9DF6006C7E0E /* LaunchScreen.storyboard in Resources */,
 				7409E80222FB21B800FC1448 /* Assets.xcassets in Resources */,
-				7409E80022FB21B700FC1448 /* Main.storyboard in Resources */,
+				743F32EE231B9F00006C7E0E /* PlayGameViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,25 +524,6 @@
 			targetProxy = 7409E81722FB21B800FC1448 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		7409E7FE22FB21B700FC1448 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7409E7FF22FB21B700FC1448 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		7409E80322FB21B800FC1448 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7409E80422FB21B800FC1448 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		7409E81D22FB21B800FC1448 /* Debug */ = {
