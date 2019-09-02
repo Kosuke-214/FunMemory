@@ -33,6 +33,10 @@ class PlayGameViewController: UIViewController {
     var roomName: String?
     // DB接続用
     let database = Database.database().reference().child("room").child("Room1")
+    // 自分がuser1かuser2かを格納する変数
+    var myPosition: String?
+    // カードインデックス配列初期化用
+    let initializeArray = [0]
 
     // カードステータスの列挙型
     enum CardStatus {
@@ -49,12 +53,42 @@ class PlayGameViewController: UIViewController {
         // 配列をランダムに並び替え
         let shuffledCardNoArray = cardNoArray.shuffled()
 
-        // カードオブジェクトを配列に格納
-        for (index, cardNo) in zip(shuffledCardNoArray.indices, shuffledCardNoArray) {
-            let card = CardData(no: cardNo)
-            cards.append(card)
+        if gameMode == "Multi" {
+            // カードのインデックス配列をDBから取得
+            database.child("cardData").observeSingleEvent(of: .value, with: { [weak self] snapshot in
+                if let data = snapshot.value as? NSArray {
+                    if data.count == 1 {
+                        // 初期配列が格納されている場合はカードのインデックス配列をDBへ格納
+                        self?.database.child("cardData").setValue(shuffledCardNoArray)
 
-            card.index = index
+                        // カードオブジェクトを配列に格納
+                        for (index, cardNo) in zip(shuffledCardNoArray.indices, shuffledCardNoArray) {
+                            let card = CardData(no: cardNo)
+                            self?.cards.append(card)
+
+                            card.index = index
+                        }
+                    } else {
+                        //既に配列格納済みの場合は取得した配列を使用する
+                        // カードオブジェクトを配列に格納
+                        for (index, cardNo) in zip(shuffledCardNoArray.indices, data) {
+                            let card = CardData(no: cardNo as! Int)
+                            self?.cards.append(card)
+
+                            card.index = index
+                        }
+                    }
+                }
+                self?.collectionView.reloadData()
+            })
+        } else {
+            // カードオブジェクトを配列に格納
+            for (index, cardNo) in zip(shuffledCardNoArray.indices, shuffledCardNoArray) {
+                let card = CardData(no: cardNo)
+                cards.append(card)
+
+                card.index = index
+            }
         }
 
         // ユーザデータをインスタンス化
@@ -77,28 +111,13 @@ class PlayGameViewController: UIViewController {
         case "Multi":
             // マルチプレイの場合
             // ユーザ名の反映
-            database.child("userName").observeSingleEvent(of: .value, with: { [weak self] snapshot in
-                if let data = snapshot.value as? NSDictionary {
-                    if let user1 = data["user1"] as! String?, let user2 = data["user2"] as! String? {
-                        if user1 == "none" {
-                            // ユーザがいない場合、user1に自分を設定
-                            self?.database.child("userName/user1").setValue(userData.readData())
-                            self?.user1Card.userName.text = userData.readData()
-                            self?.user2Card.userName.text = user2
-                        } else {
-                            // user1が存在する場合、user2に自分を設定
-                            self?.database.child("userName/user2").setValue(userData.readData())
-                            self?.user1Card.userName.text = user1
-                            self?.user2Card.userName.text = userData.readData()
-                        }
-                    }
-                }
-            })
-
+            setUserDataOnMulti()
             // ユーザが自分1人の場合は対戦相手を待機
             observeOpponent()
             // 対戦相手の退出を監視
             observeMember()
+            // ポイントを監視
+            observePoint()
 
         default:
             break
@@ -135,6 +154,40 @@ class PlayGameViewController: UIViewController {
 
         // Alertを表示
         present(alert, animated: true, completion: nil)
+    }
+
+    func setUserDataOnMulti() {
+
+        // ユーザデータをインスタンス化
+        let userData = UserData()
+
+        database.child("userName").observeSingleEvent(of: .value, with: { [weak self] snapshot in
+            if let data = snapshot.value as? NSDictionary {
+                if let user1 = data["user1"] as! String?, let user2 = data["user2"] as! String? {
+                    if user1 == "none" {
+                        // ユーザがいない場合、user1に自分を設定
+                        self?.database.child("userName/user1").setValue(userData.readData())
+                        self?.myPosition = "user1"
+                        self?.user1Card.userName.text = userData.readData()
+                        self?.user2Card.userName.text = user2
+
+                        // DB上のポイント数を0に設定
+                        self?.database.child("point/user1").setValue(0)
+                        self?.database.child("point/user2").setValue(0)
+                    } else {
+                        // user1が存在する場合、user2に自分を設定
+                        self?.database.child("userName/user2").setValue(userData.readData())
+                        self?.myPosition = "user2"
+                        self?.user1Card.userName.text = user1
+                        self?.user2Card.userName.text = userData.readData()
+
+                        // DB上のポイント数を0に設定
+                        self?.database.child("point/user1").setValue(0)
+                        self?.database.child("point/user2").setValue(0)
+                    }
+                }
+            }
+        })
     }
 
     func observeOpponent() {
@@ -209,6 +262,18 @@ class PlayGameViewController: UIViewController {
         })
     }
 
+    func observePoint() {
+        database.child("point").observe(.value, with: { [weak self] snapshot in
+            if let data = snapshot.value as? NSDictionary {
+                if let point1 = data["user1"] as! Int?, let point2 = data["user2"] as! Int? {
+                    self?.user1Card.userPoint.text = String(point1)
+                    self?.user2Card.userPoint.text = String(point2)
+                }
+            }
+        })
+
+    }
+
     func clearDB() {
         // DB情報をクリア
         self.database.child("userName/user1").setValue("none")
@@ -216,6 +281,7 @@ class PlayGameViewController: UIViewController {
         self.database.child("point/user1").setValue(0)
         self.database.child("point/user2").setValue(0)
         self.database.child("userCount").setValue(0)
+        self.database.child("cardData").setValue(initializeArray)
     }
 
 }
@@ -255,7 +321,11 @@ extension PlayGameViewController: UICollectionViewDelegate {
 
                     // ポイントを加算
                     userPoint += 1
-                    self.user1Card.userPoint.text = String(userPoint)
+                    if myPosition == "user1" {
+                        database.child("point/user1").setValue(userPoint)
+                    } else {
+                        database.child("point/user2").setValue(userPoint)
+                    }
 
                     // マッチングのアニメーション中にタップさせないようにステータス更新を遅らせる
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
@@ -276,6 +346,14 @@ extension PlayGameViewController: UICollectionViewDelegate {
                             // ステータスを更新
                             self.status = .none
                         }
+                    }
+
+                    if myPosition == "user1" {
+                        database.child("turn/user1").setValue(false)
+                        database.child("turn/user2").setValue(true)
+                    } else {
+                        database.child("turn/user1").setValue(true)
+                        database.child("turn/user2").setValue(false)
                     }
                 }
             }
