@@ -50,46 +50,8 @@ class PlayGameViewController: UIViewController {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
 
-        // 配列をランダムに並び替え
-        let shuffledCardNoArray = cardNoArray.shuffled()
-
-        if gameMode == "Multi" {
-            // カードのインデックス配列をDBから取得
-            database.child("cardData").observeSingleEvent(of: .value, with: { [weak self] snapshot in
-                if let data = snapshot.value as? NSArray {
-                    if data.count == 1 {
-                        // 初期配列が格納されている場合はカードのインデックス配列をDBへ格納
-                        self?.database.child("cardData").setValue(shuffledCardNoArray)
-
-                        // カードオブジェクトを配列に格納
-                        for (index, cardNo) in zip(shuffledCardNoArray.indices, shuffledCardNoArray) {
-                            let card = CardData(no: cardNo)
-                            self?.cards.append(card)
-
-                            card.index = index
-                        }
-                    } else {
-                        //既に配列格納済みの場合は取得した配列を使用する
-                        // カードオブジェクトを配列に格納
-                        for (index, cardNo) in zip(shuffledCardNoArray.indices, data) {
-                            let card = CardData(no: cardNo as! Int)
-                            self?.cards.append(card)
-
-                            card.index = index
-                        }
-                    }
-                }
-                self?.collectionView.reloadData()
-            })
-        } else {
-            // カードオブジェクトを配列に格納
-            for (index, cardNo) in zip(shuffledCardNoArray.indices, shuffledCardNoArray) {
-                let card = CardData(no: cardNo)
-                cards.append(card)
-
-                card.index = index
-            }
-        }
+        // カード配置を設定
+        setupCardData()
 
         // ユーザデータをインスタンス化
         let userData = UserData()
@@ -110,6 +72,9 @@ class PlayGameViewController: UIViewController {
 
         case "Multi":
             // マルチプレイの場合
+            // プレイ順を設定
+            database.child("turn/user1").setValue(true)
+            database.child("turn/user2").setValue(false)
             // ユーザ名の反映
             setUserDataOnMulti()
             // ユーザが自分1人の場合は対戦相手を待機
@@ -156,6 +121,49 @@ class PlayGameViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
 
+    func setupCardData() {
+        // 配列をランダムに並び替え
+        let shuffledCardNoArray = cardNoArray.shuffled()
+
+        if gameMode == "Multi" {
+            // カードのインデックス配列をDBから取得
+            database.child("cardData/cardNo").observeSingleEvent(of: .value, with: { [weak self] snapshot in
+                if let data = snapshot.value as? NSArray {
+                    if data.count == 1 {
+                        // 初期配列が格納されている場合はカードのインデックス配列をDBへ格納
+                        self?.database.child("cardData/cardNo").setValue(shuffledCardNoArray)
+
+                        // カードオブジェクトを配列に格納
+                        for (index, cardNo) in zip(shuffledCardNoArray.indices, shuffledCardNoArray) {
+                            let card = CardData(no: cardNo)
+                            self?.cards.append(card)
+
+                            card.index = index
+                        }
+                    } else {
+                        //既に配列格納済みの場合は取得した配列を使用する
+                        // カードオブジェクトを配列に格納
+                        for (index, cardNo) in zip(shuffledCardNoArray.indices, data) {
+                            let card = CardData(no: cardNo as! Int)
+                            self?.cards.append(card)
+
+                            card.index = index
+                        }
+                    }
+                }
+                self?.collectionView.reloadData()
+            })
+        } else {
+            // カードオブジェクトを配列に格納
+            for (index, cardNo) in zip(shuffledCardNoArray.indices, shuffledCardNoArray) {
+                let card = CardData(no: cardNo)
+                cards.append(card)
+
+                card.index = index
+            }
+        }
+    }
+
     func setUserDataOnMulti() {
 
         // ユーザデータをインスタンス化
@@ -187,6 +195,10 @@ class PlayGameViewController: UIViewController {
                     }
                 }
             }
+            // myPosition設定完了後に選択カードの監視を開始
+            self?.observeIsSelected()
+            // プレイ順を監視
+            self?.observeTurn()
         })
     }
 
@@ -274,6 +286,61 @@ class PlayGameViewController: UIViewController {
 
     }
 
+    func observeIsSelected() {
+        if myPosition == "user1"{
+            database.child("cardData").child("selected").child("user2").observe(.value, with: { [weak self] snapshot in
+                if let selected = snapshot.value as? Int {
+                    self?.cards[selected].reverseCard(collectionView: self!.collectionView)
+                }
+            })
+        } else if myPosition == "user2" {
+            database.child("cardData").child("selected").child("user1").observe(.value, with: { [weak self] snapshot in
+                if let selected = snapshot.value as? Int {
+                    self?.cards[selected].reverseCard(collectionView: self!.collectionView)
+                }
+            })
+        }
+
+    }
+
+    func observeTurn() {
+        database.child("turn").observe(.value, with: { [weak self] snapshot in
+            if let data = snapshot.value as? NSDictionary {
+                if let turn1 = data["user1"] as! Bool?, let turn2 = data["user2"] as! Bool? {
+                    if turn1  && !turn2 {
+                        // ユーザ2の枠線を削除
+                        self?.user2Card.layer.borderWidth = 0
+
+                        // ユーザ1の枠線を設定
+                        self?.user1Card.layer.borderWidth = 5.0
+                        self?.user1Card.layer.borderColor = UIColor.blue.cgColor
+
+                        if self?.myPosition == "user2" {
+                            self?.collectionView.allowsSelection = false
+                        } else {
+                            self?.collectionView.allowsSelection = true
+                        }
+
+                    } else if !turn1 && turn2 {
+                        // ユーザ1の枠線を削除
+                        self?.user1Card.layer.borderWidth = 0
+
+                        // ユーザ2の枠線を設定
+                        self?.user2Card.layer.borderWidth = 5.0
+                        self?.user2Card.layer.borderColor = UIColor.blue.cgColor
+
+                        if self?.myPosition == "user1" {
+                            self?.collectionView.allowsSelection = false
+                        } else {
+                            self?.collectionView.allowsSelection = true
+                        }
+                    }
+                }
+            }
+        })
+
+    }
+
     func clearDB() {
         // DB情報をクリア
         self.database.child("userName/user1").setValue("none")
@@ -281,116 +348,8 @@ class PlayGameViewController: UIViewController {
         self.database.child("point/user1").setValue(0)
         self.database.child("point/user2").setValue(0)
         self.database.child("userCount").setValue(0)
-        self.database.child("cardData").setValue(initializeArray)
+        self.database.child("cardData/cardNo").setValue(initializeArray)
+        self.database.child("cardData/selected").setValue(nil)
     }
 
-}
-
-extension PlayGameViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
-        let card = self.cards[indexPath.row]
-
-        switch status {
-        case .none:
-            // カードを一枚も開いていない、かつ選択したカードが裏である場合
-            if !card.isFront {
-                // 一枚目のカードを反転
-                firstCard = card
-                firstCard?.reverseCard(collectionView: self.collectionView)
-
-                // ステータスを更新
-                status = .firstOpen
-            }
-        case .firstOpen:
-            // カードを一枚開いている、かつ選択したカードが裏である場合
-            if !card.isFront {
-                // 二枚目のカードを反転
-                secondCard = card
-                secondCard?.reverseCard(collectionView: self.collectionView)
-
-                // ステータスを更新
-                status = .secondOpen
-
-                // 一枚目と二枚目のカード名が一致する場合
-                if firstCard?.imageName == secondCard?.imageName {
-                    print("Matching!!!")
-
-                    firstCard?.matchingAnimation(collectionView: self.collectionView)
-                    secondCard?.matchingAnimation(collectionView: self.collectionView)
-
-                    // ポイントを加算
-                    userPoint += 1
-                    if myPosition == "user1" {
-                        database.child("point/user1").setValue(userPoint)
-                    } else {
-                        database.child("point/user2").setValue(userPoint)
-                    }
-
-                    // マッチングのアニメーション中にタップさせないようにステータス更新を遅らせる
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-                        // ステータスを更新
-                        self.status = .none
-                    }
-
-                    // 一枚目と二枚目のカード名が一致しない場合
-                } else {
-                    // 1.5秒後にカードを戻す
-                    print("Not Matching...")
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
-                        self.firstCard?.reverseCard(collectionView: self.collectionView)
-                        self.secondCard?.reverseCard(collectionView: self.collectionView)
-
-                        // 反転中もタップさせないようにステータス更新を1秒遅らせる
-                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-                            // ステータスを更新
-                            self.status = .none
-                        }
-                    }
-
-                    if myPosition == "user1" {
-                        database.child("turn/user1").setValue(false)
-                        database.child("turn/user2").setValue(true)
-                    } else {
-                        database.child("turn/user1").setValue(true)
-                        database.child("turn/user2").setValue(false)
-                    }
-                }
-            }
-        case .secondOpen:
-            // 2枚目が開いている場合は選択させない
-            break
-        }
-    }
-}
-
-extension PlayGameViewController: UICollectionViewDataSource {
-
-    // 表示セル数
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.cards.count
-    }
-
-    // セルのデータを管理
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardCell", for: indexPath)
-
-        let imageView = cell.contentView.viewWithTag(1) as! UIImageView
-        imageView.image = UIImage(named: cards[indexPath.row].getImageName())
-
-        return cell
-    }
-}
-
-extension PlayGameViewController: UICollectionViewDelegateFlowLayout {
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-
-        // セルサイズを設定
-        let cellWidth: CGFloat = self.view.bounds.width / 5 - 4
-        let cellHeight: CGFloat = self.collectionView.frame.height / 4 - 55
-        return CGSize(width: cellWidth, height: cellHeight)
-    }
 }

@@ -29,6 +29,9 @@
 		743F32EA231B9DF6006C7E0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 743F32E7231B9DF6006C7E0E /* Main.storyboard */; };
 		743F32EC231B9EBE006C7E0E /* RoomListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 743F32EB231B9EBE006C7E0E /* RoomListViewController.storyboard */; };
 		743F32EE231B9F00006C7E0E /* PlayGameViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 743F32ED231B9F00006C7E0E /* PlayGameViewController.storyboard */; };
+		743F32F02323C9D5006C7E0E /* PlayGameViewController+UICollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743F32EF2323C9D5006C7E0E /* PlayGameViewController+UICollectionViewDelegate.swift */; };
+		743F32F22323CB18006C7E0E /* PlayGameViewController+UICollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743F32F12323CB18006C7E0E /* PlayGameViewController+UICollectionViewDataSource.swift */; };
+		743F32F42323CB90006C7E0E /* PlayGameViewController+UICollectionViewDelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743F32F32323CB90006C7E0E /* PlayGameViewController+UICollectionViewDelegateFlowLayout.swift */; };
 		92614983CC233A4314745366 /* Pods_FunMemoryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A7A2A978CEBC70198C97365 /* Pods_FunMemoryTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +82,9 @@
 		743F32E7231B9DF6006C7E0E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		743F32EB231B9EBE006C7E0E /* RoomListViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RoomListViewController.storyboard; sourceTree = "<group>"; };
 		743F32ED231B9F00006C7E0E /* PlayGameViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PlayGameViewController.storyboard; sourceTree = "<group>"; };
+		743F32EF2323C9D5006C7E0E /* PlayGameViewController+UICollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlayGameViewController+UICollectionViewDelegate.swift"; sourceTree = "<group>"; };
+		743F32F12323CB18006C7E0E /* PlayGameViewController+UICollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlayGameViewController+UICollectionViewDataSource.swift"; sourceTree = "<group>"; };
+		743F32F32323CB90006C7E0E /* PlayGameViewController+UICollectionViewDelegateFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlayGameViewController+UICollectionViewDelegateFlowLayout.swift"; sourceTree = "<group>"; };
 		84EC1BFAC9894038186D8AF3 /* Pods-FunMemory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunMemory.debug.xcconfig"; path = "Target Support Files/Pods-FunMemory/Pods-FunMemory.debug.xcconfig"; sourceTree = "<group>"; };
 		C39B462A105516043B101204 /* Pods-FunMemoryUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunMemoryUITests.debug.xcconfig"; path = "Target Support Files/Pods-FunMemoryUITests/Pods-FunMemoryUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C944712B78FE84DC421E7140 /* Pods_FunMemoryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunMemoryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -210,6 +216,9 @@
 				743F32D1231562BA006C7E0E /* TopViewController.swift */,
 				743F32D2231562BA006C7E0E /* RoomListViewController.swift */,
 				743F32D3231562BA006C7E0E /* PlayGameViewController.swift */,
+				743F32EF2323C9D5006C7E0E /* PlayGameViewController+UICollectionViewDelegate.swift */,
+				743F32F12323CB18006C7E0E /* PlayGameViewController+UICollectionViewDataSource.swift */,
+				743F32F32323CB90006C7E0E /* PlayGameViewController+UICollectionViewDelegateFlowLayout.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -487,7 +496,10 @@
 				743F32DD231562BA006C7E0E /* PlayGameViewController.swift in Sources */,
 				743F32D6231562BA006C7E0E /* UserCardView.swift in Sources */,
 				7409E7FB22FB21B700FC1448 /* AppDelegate.swift in Sources */,
+				743F32F22323CB18006C7E0E /* PlayGameViewController+UICollectionViewDataSource.swift in Sources */,
+				743F32F42323CB90006C7E0E /* PlayGameViewController+UICollectionViewDelegateFlowLayout.swift in Sources */,
 				743F32D4231562BA006C7E0E /* CardData.swift in Sources */,
+				743F32F02323C9D5006C7E0E /* PlayGameViewController+UICollectionViewDelegate.swift in Sources */,
 				743F32DA231562BA006C7E0E /* SettingViewController.swift in Sources */,
 				743F32DB231562BA006C7E0E /* TopViewController.swift in Sources */,
 				743F32DC231562BA006C7E0E /* RoomListViewController.swift in Sources */,

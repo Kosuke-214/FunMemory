@@ -181,27 +181,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FunMemory/Model/CardData.swift"
-            timestampString = "589131127.330458"
+            timestampString = "589548707.814907"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "reverseCard(collectionView:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FunMemory/Model/CardData.swift"
-            timestampString = "589131127.3305269"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "reverseCard(collectionView:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -213,12 +197,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FunMemory/ViewController/PlayGameViewController.swift"
-            timestampString = "589131127.330575"
+            timestampString = "589548707.81501"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "exitButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -229,12 +213,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FunMemory/ViewController/PlayGameViewController.swift"
-            timestampString = "589131127.3310961"
+            timestampString = "589548707.815783"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "exitButton(_:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -277,12 +261,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FunMemory/ViewController/PlayGameViewController.swift"
-            timestampString = "589131127.331462"
+            timestampString = "589548707.816346"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "exitButton(_:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -325,7 +309,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FunMemory/View/TableViewCell.swift"
-            timestampString = "589131127.331813"
+            timestampString = "589548707.816834"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
@@ -341,7 +325,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FunMemory/View/TableViewCell.swift"
-            timestampString = "589131127.331867"
+            timestampString = "589548707.816889"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
@@ -357,7 +341,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FunMemory/View/TableViewCell.swift"
-            timestampString = "589131127.3319139"
+            timestampString = "589548707.8169349"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "26"
@@ -373,11 +357,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FunMemory/ViewController/PlayGameViewController.swift"
-            timestampString = "589131127.3319581"
+            timestampString = "589548707.81698"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "210"
-            endingLineNumber = "210"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
             landmarkName = "observeOpponent()"
             landmarkType = "7">
          </BreakpointContent>
@@ -389,11 +373,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FunMemory/ViewController/PlayGameViewController.swift"
-            timestampString = "589131127.332208"
+            timestampString = "589548707.817362"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
             landmarkName = "observeMember()"
             landmarkType = "7">
          </BreakpointContent>
@@ -405,12 +389,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FunMemory/ViewController/PlayGameViewController.swift"
-            timestampString = "589131127.332441"
+            timestampString = "589548707.8177299"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "286"
+            endingLineNumber = "286"
+            landmarkName = "observePoint()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -421,12 +405,220 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FunMemory/ViewController/PlayGameViewController.swift"
-            timestampString = "589131127.332714"
+            timestampString = "589548707.818036"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "288"
+            endingLineNumber = "288"
+            landmarkName = "PlayGameViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FunMemory.PlayGameViewController.observeIsSelected() -&gt; ()"
+                  moduleName = "FunMemory"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shibata/Documents/FunMemory/FunMemory/ViewController/PlayGameViewController.swift"
+                  timestampString = "589215869.351298"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "283"
+                  endingLineNumber = "283"
+                  offsetFromSymbolStart = "235">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in FunMemory.PlayGameViewController.observeIsSelected() -&gt; ()"
+                  moduleName = "FunMemory"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shibata/Documents/FunMemory/FunMemory/ViewController/PlayGameViewController.swift"
+                  timestampString = "589215869.3550251"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "283"
+                  endingLineNumber = "283"
+                  offsetFromSymbolStart = "124">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FunMemory/ViewController/PlayGameViewController.swift"
+            timestampString = "589548707.81833"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "289"
+            endingLineNumber = "289"
+            landmarkName = "observeIsSelected()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FunMemory/Model/CardData.swift"
+            timestampString = "589548707.8186229"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "getImageName()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FunMemory/ViewController/PlayGameViewController.swift"
+            timestampString = "589548707.818675"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "287"
+            endingLineNumber = "287"
+            landmarkName = "observePoint()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FunMemory/ViewController/PlayGameViewController.swift"
+            timestampString = "589548707.818926"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "290"
+            endingLineNumber = "290"
+            landmarkName = "observeIsSelected()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FunMemory/ViewController/PlayGameViewController.swift"
+            timestampString = "589548707.819168"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "296"
+            endingLineNumber = "296"
+            landmarkName = "observeIsSelected()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FunMemory/ViewController/PlayGameViewController.swift"
+            timestampString = "589548707.8194129"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "294"
+            endingLineNumber = "294"
+            landmarkName = "observeIsSelected()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FunMemory.PlayGameViewController.observeIsSelected() -&gt; ()"
+                  moduleName = "FunMemory"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shibata/Documents/FunMemory/FunMemory/ViewController/PlayGameViewController.swift"
+                  timestampString = "589215868.014384"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "289"
+                  endingLineNumber = "289"
+                  offsetFromSymbolStart = "1168">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (__C.FIRDataSnapshot) -&gt; () in FunMemory.PlayGameViewController.observeIsSelected() -&gt; ()"
+                  moduleName = "FunMemory"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shibata/Documents/FunMemory/FunMemory/ViewController/PlayGameViewController.swift"
+                  timestampString = "589215868.016749"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "289"
+                  endingLineNumber = "289"
+                  offsetFromSymbolStart = "124">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FunMemory/ViewController/PlayGameViewController.swift"
+            timestampString = "589548707.819657"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "297"
+            endingLineNumber = "297"
+            landmarkName = "observeIsSelected()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FunMemory/ViewController/PlayGameViewController.swift"
+            timestampString = "589548707.819899"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
+            landmarkName = "setUserDataOnMulti()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FunMemory/ViewController/PlayGameViewController.swift"
+            timestampString = "589548707.82015"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
+            landmarkName = "setUserDataOnMulti()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
