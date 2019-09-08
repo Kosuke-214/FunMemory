@@ -9,6 +9,12 @@
 import UIKit
 
 extension PlayGameViewController: UICollectionViewDelegate {
+
+    // カードステータスの列挙型
+    enum ResultStatus {
+        case user1Win, user2Win, draw, soloFinish
+    }
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
         let card = self.cards[indexPath.row]
@@ -55,10 +61,14 @@ extension PlayGameViewController: UICollectionViewDelegate {
 
                     // ポイントを加算
                     userPoint += 1
-                    if myPosition == "user1" {
-                        database.child("point/user1").setValue(userPoint)
+                    if gameMode == "Multi" {
+                        if myPosition == "user1" {
+                            database.child("point/user1").setValue(userPoint)
+                        } else {
+                            database.child("point/user2").setValue(userPoint)
+                        }
                     } else {
-                        database.child("point/user2").setValue(userPoint)
+                        user1Card.userPoint.text = String(userPoint)
                     }
 
                     // マッチングのアニメーション中にタップさせないようにステータス更新を遅らせる
@@ -66,6 +76,9 @@ extension PlayGameViewController: UICollectionViewDelegate {
                         // ステータスを更新
                         self.status = .none
                     }
+
+                    // 終了判定
+                    self.checkFinish()
 
                     // 一枚目と二枚目のカード名が一致しない場合
                 } else {
@@ -103,6 +116,91 @@ extension PlayGameViewController: UICollectionViewDelegate {
         case .secondOpen:
             // 2枚目が開いている場合は選択させない
             break
+        }
+    }
+
+    func checkFinish() {
+
+        if gameMode == "Multi" {
+            database.child("point").observeSingleEvent(of: .value, with: { [weak self] snapshot in
+                if let data = snapshot.value as? NSDictionary {
+                    if let point1 = data["user1"] as! Int?, let point2 = data["user2"] as! Int? {
+                        let totalPoint = point1 + point2
+                        if totalPoint == 10 {
+                            if point1 > point2 {
+                                self?.showFinishAlert(result: .user1Win)
+                            } else if point2 > point1 {
+                                self?.showFinishAlert(result: .user2Win)
+                            } else {
+                                self?.showFinishAlert(result: .draw)
+                            }
+                        }
+                    }
+                }
+            })
+        } else {
+            if userPoint == 10 {
+                showFinishAlert(result: .soloFinish)
+            }
+        }
+    }
+
+    func showFinishAlert(result: ResultStatus) {
+
+        let resultTitle: String?
+        let resultMessage: String?
+
+        switch result {
+        case .user1Win:
+            resultTitle = "\(user1Card.userName.text!)が勝利しました"
+
+            if myPosition == "user1" {
+                resultMessage = "あなたの勝ちです"
+            } else {
+                resultMessage = "あなたの負けです"
+            }
+
+        case .user2Win:
+            resultTitle = "\(user2Card.userName.text!)が勝利しました"
+
+            if myPosition == "user1" {
+                resultMessage = "あなたの負けです"
+            } else {
+                resultMessage = "あなたの勝ちです"
+            }
+
+        case .draw:
+            resultTitle = "引き分けです"
+            resultMessage = ""
+
+        case .soloFinish:
+            resultTitle = "ゲーム終了です"
+            resultMessage = ""
+        }
+
+        let alert: UIAlertController = UIAlertController(title: resultTitle,
+                                                         message: resultMessage,
+                                                         preferredStyle: UIAlertController.Style.alert)
+
+        // Actionの設定
+        let okAction: UIAlertAction = UIAlertAction(title: "終了", style: UIAlertAction.Style.default,
+                                                    handler: { (_: UIAlertAction!) -> Void in
+
+                                                        // DB情報をクリア
+                                                        self.clearDB()
+
+                                                        // 画面遷移実行
+                                                        self.performSegue(withIdentifier:
+                                                            "exitGameSegue",
+                                                                          sender: true)
+        })
+
+        // UIAlertControllerにActionを追加
+        alert.addAction(okAction)
+
+        // マッチングのアニメーション完了後にアラートを表示
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+            self.present(alert, animated: true, completion: nil)
         }
     }
 

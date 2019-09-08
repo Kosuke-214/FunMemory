@@ -282,6 +282,8 @@ class PlayGameViewController: UIViewController {
                     self?.user2Card.userPoint.text = String(point2)
                 }
             }
+            // ゲーム終了判定
+            self?.checkFinish()
         })
 
     }
@@ -300,7 +302,6 @@ class PlayGameViewController: UIViewController {
                 }
             })
         }
-
     }
 
     func observeTurn() {
