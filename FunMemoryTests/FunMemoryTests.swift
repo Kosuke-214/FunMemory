@@ -31,4 +31,37 @@ class FunMemoryTests: XCTestCase {
         }
     }
 
+    func testUserData() {
+        let userData = UserData()
+        let inRange = "aaaaa"
+        let outRange = "aaaaaaaaaaa"
+
+        // 文字数制限内
+        userData.saveData(str: inRange)
+        XCTAssertNotNil(userData.readData())
+        XCTAssertEqual(userData.readData(), inRange)
+
+        // 文字数制限以上→表示時に切り捨てるため、格納&読み出しは可能
+        userData.saveData(str: outRange)
+        XCTAssertNotNil(userData.readData())
+        XCTAssertEqual(userData.readData(), outRange)
+
+    }
+
+    func testCardData() {
+        let cardNo = 1
+        let card = CardData(no: cardNo)
+
+        var imageName = card.getImageName()
+        XCTAssertNotNil(imageName)
+        XCTAssertEqual(imageName, "CardBack")
+
+        card.isFront.toggle()
+        imageName = card.getImageName()
+
+        XCTAssertNotNil(imageName)
+        XCTAssertEqual(imageName, card.imageName)
+
+    }
+
 }

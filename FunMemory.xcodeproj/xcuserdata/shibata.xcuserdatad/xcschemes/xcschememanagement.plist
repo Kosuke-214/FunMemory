@@ -9,6 +9,29 @@
 			<key>orderHint</key>
 			<integer>18</integer>
 		</dict>
+		<key>FunMemoryTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>19</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>7409E7F622FB21B700FC1448</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7409E80A22FB21B800FC1448</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7409E81522FB21B800FC1448</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 	</dict>
 </dict>
 </plist>

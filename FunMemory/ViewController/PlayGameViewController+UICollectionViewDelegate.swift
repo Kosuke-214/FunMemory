@@ -10,7 +10,7 @@ import UIKit
 
 extension PlayGameViewController: UICollectionViewDelegate {
 
-    // カードステータスの列挙型
+    // 終了結果ステータスの列挙型
     enum ResultStatus {
         case user1Win, user2Win, draw, soloFinish
     }
